@@ -1,5 +1,7 @@
 package moneycalculator.ui.swing;
 
-public class SwingMoneyDisplay {
+import moneycalculator.ui.MoneyDisplay;
+
+public class SwingMoneyDisplay implements MoneyDisplay{
     
 }
