@@ -1,6 +1,7 @@
 package moneycalculator;
 
 
+import java.awt.*;
 import java.awt.Dimension;
 import java.awt.Menu;
 import java.awt.MenuBar;
@@ -8,9 +9,14 @@ import java.awt.MenuItem;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenuBar;
+import javax.swing.JPanel;
+import moneycalculator.ui.swing.SwingMoneyDisplay;
 
 public class MainFrame extends JFrame{
+    
+    private int index = 0;
 
     public MainFrame()  {
         setTitle("Money Calculator");
@@ -18,7 +24,14 @@ public class MainFrame extends JFrame{
         setSize(400,400);
         setMinimumSize(new Dimension(400,400));
         setLocationRelativeTo(null);
-        this.setMenuBar(menubar());
+        setMenuBar(menubar());
+        setLayout(new BorderLayout());
+        add(label(), BorderLayout.NORTH);
+        add(label(), BorderLayout.SOUTH);
+        add(label(), BorderLayout.WEST);
+        add(label(), BorderLayout.EAST);
+        add(moneyDisplay());
+        
         setVisible(true);
     }
 
@@ -48,5 +61,17 @@ public class MainFrame extends JFrame{
                 System.out.println("New ExchangeRate");
             }
         };
+    }
+
+    private JPanel label(){
+        JPanel panel = new JPanel();
+        panel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        panel.add(new JLabel("A" + index++));
+        return panel;
+    }
+
+    private SwingMoneyDisplay moneyDisplay(){
+        SwingMoneyDisplay swingMoneyDisplay = new SwingMoneyDisplay();
+        return swingMoneyDisplay;
     }
 }
